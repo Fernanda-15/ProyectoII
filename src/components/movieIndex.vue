@@ -44,7 +44,7 @@ export default {
     methods: {
         allMovies() {
 
-            fetch(this.url + '/.netlify/functions/movieFindAll',
+            fetch(this.url + '/netlify/functions/movieFindAll',
                 { headers: { 'Accept': 'application/json' } })
                 .then((response) => response.json())
                 .then((items) => {
