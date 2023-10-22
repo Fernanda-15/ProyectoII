@@ -25,11 +25,11 @@
                             <router-link class="button" :to="'/movie/edit/' + movie.id"
                                 style="color:rgb(231, 205, 55)">Editar</router-link>
                             <a class="button" v-on:click="deleteMovie(movie.id)" style="color:crimson">Eliminar</a>
-                            <a class="button" v-on:click="cargarCambios()" style="color:darkorchid">Ejecutar cambios</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <a class="button" v-on:click="cargarCambios()" style="color:darkorchid">Ejecutar cambios</a>
         </div>
     </div>
 </template>
