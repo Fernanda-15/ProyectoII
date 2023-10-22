@@ -19,17 +19,17 @@ exports.handler = async (event, context) => {
       const request = JSON.parse(message.content.toString());
       switch (request.method) {
         case "DELETE":
-          await fetch(url+'movieDeleteBatch/'+request.id, {
+          await fetch(url+'directorDeleteBatch/'+request.id, {
             method: "DELETE",
             headers: {"Content-type": "application/json"}});
           break;
         case "UPDATE":
-          await fetch(url+'movieUpdateBatch/'+request.id, {
+          await fetch(url+'directorUpdateBatch/'+request.id, {
             headers: {"Content-type": "application/json"},
             method: "PUT", body: JSON.stringify(request.body)});
           break;
         case "INSERT":
-          await fetch(url+'movieInsertBatch', {
+          await fetch(url+'directorInsertBatch', {
             headers: {"Content-type": "application/json"},
             method: "POST",body: JSON.stringify(request.body)});
           break;
