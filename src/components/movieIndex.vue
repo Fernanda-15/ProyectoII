@@ -43,58 +43,23 @@ export default {
     },
     methods: {
         allMovies() {
-            fetch('http://localhost:1337/movies', {
-                method: 'GET',
-                headers: { 'Accept': 'application/json' }
-            })
+
+            fetch(this.url + '/.netlify/functions/movieFindAll',
+                { headers: { 'Accept': 'application/json' } })
                 .then((response) => response.json())
-                .then((result) => {
-                    this.movies = result;
-                    const promiseDirector = this.movies.map((movie) =>
-                        fetch('http://localhost:1337/director/' + movie.director, {
-                            method: 'GET',
-                            headers: { 'Accept': 'application/json' }
-                        })
-                            .then((response) => response.json())
-                            .then((directorResult) => {
-                                movie.director = directorResult.nombre;
-
-                            })
-                    );
-
-                    const promiseStudio = this.movies.map((movie) =>
-                        fetch('http://localhost:1337/studio/' + movie.estudio, {
-                            method: 'GET',
-                            headers: { 'Accept': 'application/json' }
-                        })
-                            .then((response) => response.json())
-                            .then((studioResult) => {
-                                movie.estudio = studioResult.nombre;
-
-                            })
-                    );
-
-                    return Promise.all([promiseDirector, promiseStudio]);
+                .then((items) => {
+                    this.movies = items;
                 })
-                .then(() => {
-                    console.log(this.movies);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
 
         },
         deleteMovie(id) {
-            fetch('http://localhost:1337/movie/' + id, {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-                .then((response) => response.json())
-                .then((result) => {
-                })
-            this.allMovies();
+            fetch(this.url+'/.netlify/functions/movieDelete/'+id,
+           { headers: {'Content-Type': 'application/json'},
+             method: 'DELETE'})
+            .then((items) => {
+              this.allmovies();
+            }
+          )
         }
     },
     mounted() {
