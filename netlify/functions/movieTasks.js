@@ -4,7 +4,7 @@ const rabbitPromise = require('./rabbitMQ');
 
 const headers = require('./headersCORS');
 
-const url = 'https://tourmaline-lollipop-786e11.netlify.app/.netlify/functions/'
+const url = 'https://proyecto2-sistemas-distribuidos-movie.netlify.app/.netlify/functions/'
 
 exports.handler = async (event, context) => {
 
