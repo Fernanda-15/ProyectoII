@@ -64,10 +64,10 @@ export default {
                 }
                 )
         },
-        cargarCambios(id) {
+        cargarCambios() {
             fetch(this.url + '/.netlify/functions/movieTasks/')
                 .then(response => {
-                    this.allmovies();
+                    this.allMovies();
                 })
 
         }
