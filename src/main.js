@@ -2,8 +2,8 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 
-// import './assets/css/normalize.css';
-import './assets/css/skeleton.css';
+ import './assets/CSS/normalize.css';
+import './assets/CSS/skeleton.css';
 
 const app = createApp(App);
   
