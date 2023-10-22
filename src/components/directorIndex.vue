@@ -41,34 +41,31 @@ export default {
     },
     methods: {
         allDirectores() {
-            fetch('http://localhost:1337/director', {
-                method: 'GET',
-                headers: { 'Accept': 'application/json' }
-            })
+            fetch(this.url + '/.netlify/functions/directorFindAll',
+                { headers: { 'Accept': 'application/json' } })
                 .then((response) => response.json())
-                .then((result) => {
-                    this.directores = result;
-
+                .then((items) => {
+                    this.directores = items;
                 })
-                .then(() => {
-                    console.log(this.directores);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
 
         },
         deleteDirector(id) {
-            fetch('http://localhost:1337/director/' + id, {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-                .then((response) => response.json())
-                .then((result) => {
+            fetch(this.url + '/.netlify/functions/directorDelete/' + id,
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    method: 'DELETE'
                 })
-            this.allDirectores();
+                .then((items) => {
+                    this.allDirectores();
+                }
+                )
+        },
+        cargarCambios() {
+            fetch(this.url + '/.netlify/functions/directorTasks/')
+                .then(response => {
+                    this.allDirectores();
+                })
+
         }
     },
     mounted() {

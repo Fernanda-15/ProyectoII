@@ -41,33 +41,30 @@ export default {
     },
     methods: {
         allEstudios() {
-            fetch('http://localhost:1337/studio', {
-                method: 'GET',
-                headers: { 'Accept': 'application/json' }
-            })
+            fetch(this.url + '/.netlify/functions/studioFindAll',
+                { headers: { 'Accept': 'application/json' } })
                 .then((response) => response.json())
-                .then((result) => {
-                    this.estudios = result;
-
+                .then((items) => {
+                    this.estudios = items;
                 })
-                .then(() => {
-                    console.log(this.estudios);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
         },
         deleteEstudio(id) {
-            fetch('http://localhost:1337/studio/' + id, {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-                .then((response) => response.json())
-                .then((result) => {
+            fetch(this.url + '/.netlify/functions/studioDelete/' + id,
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    method: 'DELETE'
                 })
-            this.allEstudios();
+                .then((items) => {
+                    this.allEstudios();
+                }
+                )
+        },
+        cargarCambios() {
+            fetch(this.url + '/.netlify/functions/studioTasks/')
+                .then(response => {
+                    this.allEstudios ();
+                })
+
         }
     },
     mounted() {
