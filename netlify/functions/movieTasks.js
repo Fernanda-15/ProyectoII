@@ -14,7 +14,6 @@ exports.handler = async (event, context) => {
 
   try {
     const channel = await rabbitPromise();
-    console.log("RABIT", channel);
     let message = await channel.get("proyecto",{'noAck':true});
     while (message) {
       const request = JSON.parse(message.content.toString());
