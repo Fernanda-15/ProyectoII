@@ -106,7 +106,7 @@ export default {
                     body: JSON.stringify(this.book)
                 })
                 .then((data) => {
-                    this.$router.push('/book');
+                    this.$router.push('/movie');
                 }
                 )
         },
