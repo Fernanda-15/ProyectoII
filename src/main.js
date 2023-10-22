@@ -7,6 +7,7 @@ import './assets/CSS/skeleton.css';
 
 const app = createApp(App);
   
-app.config.globalProperties.url = 'https://movie-rabbitmq.netlify.app';
+app.config.globalProperties.url = 'https://tourmaline-lollipop-786e11.netlify.app';
+
 
 app.use(router).mount("#app");
