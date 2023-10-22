@@ -65,7 +65,7 @@ export default {
         cargarCambios(id) {
             fetch(this.url+'/.netlify/functions/movieTasks/',
            { headers: {'Content-Type': 'application/json'},
-             method: 'POST'})
+             method: 'GET'})
             .then((items) => {
               this.allmovies();
             }
