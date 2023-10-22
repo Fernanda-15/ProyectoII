@@ -54,22 +54,22 @@ export default {
 
         },
         deleteMovie(id) {
-            fetch(this.url+'/.netlify/functions/movieDelete/'+id,
-           { headers: {'Content-Type': 'application/json'},
-             method: 'DELETE'})
-            .then((items) => {
-              this.allmovies();
-            }
-          )
+            fetch(this.url + '/.netlify/functions/movieDelete/' + id,
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    method: 'DELETE'
+                })
+                .then((items) => {
+                    this.allMovies();
+                }
+                )
         },
         cargarCambios(id) {
-            fetch(this.url+'/.netlify/functions/movieTasks/',
-           { headers: {'Content-Type': 'application/json'},
-             method: 'GET'})
-            .then((items) => {
-              this.allmovies();
-            }
-          )
+            fetch(this.url + '/.netlify/functions/movieTasks/')
+                .then(response => {
+                    this.allmovies();
+                })
+
         }
     },
     mounted() {
