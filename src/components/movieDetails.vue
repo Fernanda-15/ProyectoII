@@ -99,14 +99,14 @@ export default {
                 )
         },
         createMovie: function () {
-            fetch('http://localhost:1337/movie',
+            fetch(this.url + '/.netlify/functions/bookInsert',
                 {
                     headers: { 'Content-Type': 'application/json' },
-                    method: 'PUT',
-                    body: JSON.stringify(this.movie)
+                    method: 'POST',
+                    body: JSON.stringify(this.book)
                 })
                 .then((data) => {
-                    this.$router.push('/movie');
+                    this.$router.push('/book');
                 }
                 )
         },
