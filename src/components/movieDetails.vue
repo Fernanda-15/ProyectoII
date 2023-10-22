@@ -78,7 +78,7 @@ export default {
     },
     methods: {
         findMovie: function (id) {
-            fetch('http://localhost:1337/movie/' + id,
+            fetch(this.url + '/.netlify/functions/movieFind' + id,
                 { headers: { 'Accept': 'application/json' } })
                 .then((response) => response.json())
                 .then((result) => {
@@ -86,7 +86,7 @@ export default {
                 })
         },
         updateMovie: function () {
-            fetch('http://localhost:1337/movie/' + this.id,
+            fetch(this.url + '/.netlify/functions/movieUpdate' + this.id,
                 {
                     headers: { 'Content-Type': 'application/json' },
                     method: 'POST',
@@ -111,8 +111,8 @@ export default {
                 )
         },
         loadData() {
+
             fetch(this.url + '/.netlify/functions/directorFindAll', {
-                method: 'GET',
                 headers: { 'Accept': 'application/json' }
             })
                 .then((response) => response.json())
@@ -121,7 +121,6 @@ export default {
                 });
 
             fetch(this.url + '/.netlify/functions/studioFindAll', {
-                method: 'GET',
                 headers: { 'Accept': 'application/json' }
             })
                 .then((response) => response.json())
