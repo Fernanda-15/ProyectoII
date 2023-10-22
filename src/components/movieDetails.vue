@@ -103,7 +103,7 @@ export default {
                 {
                     headers: { 'Content-Type': 'application/json' },
                     method: 'POST',
-                    body: JSON.stringify(this.book)
+                    body: JSON.stringify(this.movie)
                 })
                 .then((data) => {
                     this.$router.push('/movie');
@@ -111,8 +111,7 @@ export default {
                 )
         },
         loadData() {
-
-            fetch('http://localhost:1337/director', {
+            fetch(this.url + '/.netlify/functions/directorFindAll', {
                 method: 'GET',
                 headers: { 'Accept': 'application/json' }
             })
@@ -121,7 +120,7 @@ export default {
                     this.director = result;
                 });
 
-            fetch('http://localhost:1337/studio', {
+            fetch(this.url + '/.netlify/functions/studioFindAll', {
                 method: 'GET',
                 headers: { 'Accept': 'application/json' }
             })
@@ -152,7 +151,7 @@ export default {
             }
         },
         findId() {
-            fetch('http://localhost:1337/movies', {
+            fetch(this.url + '/.netlify/functions/movieFindAll', {
                 method: 'GET',
                 headers: { 'Accept': 'application/json' }
             })
