@@ -48,7 +48,7 @@ export default {
     },
     methods: {
         findEstudio: function (id) {
-            fetch('http://localhost:1337/studio/' + id, { headers: { 'Accept': 'application/json' } })
+            fetch(this.url + '/.netlify/functions/studioFind/' + id, { headers: { 'Accept': 'application/json' } })
                 .then((response) => response.json())
                 .then((result) => {
                     this.estudio = result;

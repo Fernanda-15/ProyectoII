@@ -64,11 +64,11 @@ export default {
     },
     methods: {
         findMovie: function (id) {
-            fetch('http://localhost:1337/movie/' + id, { headers: { 'Accept': 'application/json' } })
+            fetch(this.url + '/.netlify/functions/movieFind/' + id, { headers: { 'Accept': 'application/json' } })
                 .then((response) => response.json())
                 .then((result) => {
                     this.movie = result;
-                    fetch('http://localhost:1337/director/' + this.movie.director, { headers: { 'Accept': 'application/json' } })
+                    fetch(this.url + '/.netlify/functions/directorFind/' + this.movie.director, { headers: { 'Accept': 'application/json' } })
                         .then((response) => response.json())
                         .then((result) => {
                             this.movie.director = result.nombre;
@@ -77,7 +77,7 @@ export default {
                             console.error('Error en la segunda llamada:', error);
                         });
 
-                    fetch('http://localhost:1337/studio/' + this.movie.estudio, { headers: { 'Accept': 'application/json' } })
+                    fetch(this.url + '/.netlify/functions/studioFind/' + this.movie.estudio, { headers: { 'Accept': 'application/json' } })
                         .then((response) => response.json())
                         .then((result) => {
                             this.movie.estudio = result.nombre;

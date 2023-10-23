@@ -53,7 +53,7 @@ export default {
     },
     methods: {
         findDirector: function (id) {
-            fetch('http://localhost:1337/director/' + id,
+            fetch(this.url + '/.netlify/functions/directorFind' + id,
                 { headers: { 'Accept': 'application/json' } })
                 .then((response) => response.json())
                 .then((result) => {
@@ -61,10 +61,9 @@ export default {
                 })
         },
         updateDirector: function () {
-            fetch('http://localhost:1337/director/' + this.id,
+            fetch(this.url + '/.netlify/functions/directorUpdate' + this.id,
                 {
                     headers: { 'Content-Type': 'application/json' },
-                    method: 'POST',
                     body: JSON.stringify(this.director)
                 })
                 .then((data) => {
@@ -74,10 +73,9 @@ export default {
                 )
         },
         createDirector: function () {
-            fetch('http://localhost:1337/director',
+            fetch(this.url + '/.netlify/functions/directorInsert',
                 {
                     headers: { 'Content-Type': 'application/json' },
-                    method: 'PUT',
                     body: JSON.stringify(this.director)
                 })
                 .then((data) => {
@@ -86,8 +84,7 @@ export default {
                 )
         },
         findId() {
-            fetch('http://localhost:1337/director', {
-                method: 'GET',
+            fetch(this.url + '/.netlify/functions/directorFindAll', {
                 headers: { 'Accept': 'application/json' }
             })
                 .then((response) => response.json())

@@ -53,7 +53,7 @@ export default {
     },
     methods: {
         findEstudio: function (id) {
-            fetch('http://localhost:1337/studio/' + id,
+            fetch(this.url + '/.netlify/functions/studioFind' + id,
                 { headers: { 'Accept': 'application/json' } })
                 .then((response) => response.json())
                 .then((result) => {
@@ -61,10 +61,9 @@ export default {
                 })
         },
         updateEstudio: function () {
-            fetch('http://localhost:1337/studio/' + this.id,
+            fetch(this.url + '/.netlify/functions/studioUpdate' + this.id,
                 {
                     headers: { 'Content-Type': 'application/json' },
-                    method: 'POST',
                     body: JSON.stringify(this.estudio)
                 })
                 .then((data) => {
@@ -74,10 +73,9 @@ export default {
                 )
         },
         createEstudio: function () {
-            fetch('http://localhost:1337/studio',
+            fetch(this.url + '/.netlify/functions/studioInsert',
                 {
                     headers: { 'Content-Type': 'application/json' },
-                    method: 'PUT',
                     body: JSON.stringify(this.director)
                 })
                 .then((data) => {
@@ -86,8 +84,7 @@ export default {
                 )
         },
         findId() {
-            fetch('http://localhost:1337/studio', {
-                method: 'GET',
+            fetch(this.url + '/.netlify/functions/studioFindAll', {
                 headers: { 'Accept': 'application/json' }
             })
                 .then((response) => response.json())

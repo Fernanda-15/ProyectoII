@@ -50,7 +50,7 @@ export default {
     },
     methods: {
         findDirector: function (id) {
-            fetch('http://localhost:1337/director/' + id, { headers: { 'Accept': 'application/json' } })
+            fetch(this.url + '/.netlify/functions/directorFind/' + id, { headers: { 'Accept': 'application/json' } })
                 .then((response) => response.json())
                 .then((result) => {
                     this.director = result;
