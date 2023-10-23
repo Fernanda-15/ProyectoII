@@ -53,7 +53,7 @@ export default {
     },
     methods: {
         findEstudio: function (id) {
-            fetch(this.url + '/.netlify/functions/studioFind' + id,
+            fetch(this.url + '/.netlify/functions/studioFind/' + id,
                 { headers: { 'Accept': 'application/json' } })
                 .then((response) => response.json())
                 .then((result) => {
@@ -61,7 +61,7 @@ export default {
                 })
         },
         updateEstudio: function () {
-            fetch(this.url + '/.netlify/functions/studioUpdate' + this.id,
+            fetch(this.url + '/.netlify/functions/studioUpdate/' + this.id,
                 {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(this.estudio)

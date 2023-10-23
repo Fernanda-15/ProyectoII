@@ -53,7 +53,7 @@ export default {
     },
     methods: {
         findDirector: function (id) {
-            fetch(this.url + '/.netlify/functions/directorFind' + id,
+            fetch(this.url + '/.netlify/functions/directorFind/' + id,
                 { headers: { 'Accept': 'application/json' } })
                 .then((response) => response.json())
                 .then((result) => {
@@ -61,7 +61,7 @@ export default {
                 })
         },
         updateDirector: function () {
-            fetch(this.url + '/.netlify/functions/directorUpdate' + this.id,
+            fetch(this.url + '/.netlify/functions/directorUpdate/' + this.id,
                 {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(this.director)
