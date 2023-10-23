@@ -65,7 +65,7 @@ export default {
                 )
         },
         cargarCambios() {
-            fetch(this.url + '/.netlify/functions/movieTasks/')
+            fetch(this.url + '/.netlify/functions/movieTasks')
                 .then(response => {
                     this.allMovies();
                 })

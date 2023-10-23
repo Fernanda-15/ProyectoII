@@ -78,7 +78,7 @@ export default {
     },
     methods: {
         findMovie: function (id) {
-            fetch(this.url + '/.netlify/functions/movieFind' + id,
+            fetch(this.url + '/.netlify/functions/movieFind/' + id,
                 { headers: { 'Accept': 'application/json' } })
                 .then((response) => response.json())
                 .then((result) => {
@@ -86,7 +86,7 @@ export default {
                 })
         },
         updateMovie: function () {
-            fetch(this.url + '/.netlify/functions/movieUpdate' + this.id,
+            fetch(this.url + '/.netlify/functions/movieUpdate/' + this.id,
                 {
                     headers: { 'Content-Type': 'application/json' },
                     method: 'POST',
