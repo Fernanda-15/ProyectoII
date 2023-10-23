@@ -60,7 +60,7 @@ export default {
     },
     created() {
         const route = useRoute();
-        this.findMovie(route.params._id);
+        this.findMovie(route.params.id);
     },
     methods: {
         findMovie: function (id) {
