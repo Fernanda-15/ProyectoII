@@ -20,11 +20,11 @@
                         <td>{{ movie.estudio }}</td>
                         <td>{{ movie.director }}</td>
                         <td>
-                            <router-link class="button" :to="'/movie/show/' + movie.id"
+                            <router-link class="button" :to="'/movie/show/' + movie._id"
                                 style="color: cornflowerblue">Mostrar</router-link>
-                            <router-link class="button" :to="'/movie/edit/' + movie.id"
+                            <router-link class="button" :to="'/movie/edit/' + movie._id"
                                 style="color:rgb(231, 205, 55)">Editar</router-link>
-                            <a class="button" v-on:click="deleteMovie(movie.id)" style="color:crimson">Eliminar</a>
+                            <a class="button" v-on:click="deleteMovie(movie._id)" style="color:crimson">Eliminar</a>
                         </td>
                     </tr>
                 </tbody>
